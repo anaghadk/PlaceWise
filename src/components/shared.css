@@ -1,0 +1,82 @@
+.skillbar { margin-bottom: 16px; }
+.skillbar-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+.skillbar-level { color: var(--ink-faint); font-size: 0.76rem; }
+.skillbar-track {
+  position: relative;
+  height: 6px;
+  background: var(--bg-sunken);
+  border-radius: 3px;
+  overflow: visible;
+}
+.skillbar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  height: 100%;
+  background: var(--cobalt);
+  border-radius: 3px;
+}
+.skillbar-target {
+  position: absolute;
+  top: -3px;
+  width: 2px;
+  height: 12px;
+  background: var(--gold);
+}
+
+.id-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+.stat-row:first-child { border-top: none; }
+.stat-row-label { font-size: 0.9rem; color: var(--ink); font-weight: 500; }
+.stat-row-sub { font-size: 0.78rem; color: var(--ink-faint); margin-top: 2px; }
+.stat-row-value { font-family: var(--font-mono); font-size: 0.95rem; }
+
+.empty-state {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--ink-faint);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-md);
+}
+
+.form-field { margin-bottom: 18px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.form-field label { font-size: 0.83rem; font-weight: 600; color: var(--ink); }
+.form-field input, .form-field select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-raised);
+  font-size: 0.92rem;
+}
+.form-field input:focus, .form-field select:focus {
+  outline: 2px solid var(--cobalt);
+  outline-offset: 1px;
+  border-color: var(--cobalt);
+}
+.form-error {
+  background: var(--brick-tint);
+  border: 1px solid #e3c1b6;
+  color: var(--brick);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}

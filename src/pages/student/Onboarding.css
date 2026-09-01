@@ -1,0 +1,176 @@
+.ob-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+}
+
+/* ---- Rail ---- */
+.ob-rail {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.ob-wordmark {
+  color: var(--bg);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 44px;
+}
+.ob-wordmark:hover { text-decoration: none; }
+
+.ob-rail-greeting {
+  color: #9BA3C4;
+  font-size: 0.85rem;
+  margin-bottom: 22px;
+}
+
+.ob-rail-steps { list-style: none; margin: 0 0 auto; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.ob-rail-steps li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  color: #7A82A6;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+.ob-rail-steps li.active { color: var(--bg); }
+.ob-rail-steps li.done { color: #C7CBDE; }
+
+.ob-rail-index {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #4A5170;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  flex-shrink: 0;
+}
+.ob-rail-steps li.active .ob-rail-index { border-color: var(--gold); color: var(--gold); }
+.ob-rail-steps li.done .ob-rail-index { border-color: var(--sage); background: var(--sage); color: var(--ink); }
+
+.ob-rail-note {
+  color: #7A82A6;
+  font-size: 0.8rem;
+  max-width: 30ch;
+  margin: 32px 0 0;
+}
+
+/* ---- Content ---- */
+.ob-content { display: flex; justify-content: center; padding: 72px 32px 96px; }
+.ob-content-inner { width: 100%; max-width: 540px; }
+
+.ob-progress-mobile { display: none; }
+
+.ob-step h1 { font-size: 1.85rem; margin-bottom: 10px; }
+.ob-step-sub { max-width: 48ch; margin-bottom: 32px; }
+
+.ob-question { margin-bottom: 30px; }
+.ob-question h4 { margin-bottom: 14px; font-size: 0.95rem; }
+
+.ob-chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.ob-chip {
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg-raised);
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+.ob-chip:hover { border-color: var(--ink); }
+.ob-chip.active { background: var(--cobalt); border-color: var(--cobalt); color: #fff; }
+
+.ob-sliders { display: flex; flex-direction: column; gap: 18px; }
+.ob-slider-row input[type='range'] { width: 100%; accent-color: var(--cobalt); margin-top: 6px; }
+.ob-slider-label { display: flex; justify-content: space-between; font-size: 0.87rem; }
+.ob-slider-label span:first-child { color: var(--ink); font-weight: 500; }
+.ob-slider-label .mono { color: var(--ink-faint); }
+
+.ob-actions { display: flex; align-items: center; gap: 18px; margin-top: 8px; }
+
+/* ---- Dropzone (resume step) ---- */
+.ob-dropzone {
+  border: 1.5px dashed var(--line-strong);
+  border-radius: var(--radius-md);
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  color: var(--ink-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  margin-bottom: 28px;
+}
+.ob-dropzone svg { color: var(--ink-faint); }
+.ob-dropzone:hover, .ob-dropzone.dragging { border-color: var(--cobalt); background: var(--cobalt-tint); }
+.ob-dropzone p { margin: 0; font-size: 0.9rem; }
+
+.ob-parsing, .ob-parsed { padding: 20px 22px; margin-bottom: 28px; display: flex; flex-direction: column; gap: 14px; }
+.ob-parsing { flex-direction: row; align-items: center; }
+.ob-parsing-info { flex: 1; }
+.ob-parsing-name { font-weight: 600; font-size: 0.9rem; }
+.ob-parsing-status { font-size: 0.82rem; color: var(--ink-faint); display: flex; align-items: center; gap: 8px; margin-top: 3px; }
+
+.ob-spinner {
+  width: 12px; height: 12px;
+  border: 2px solid var(--line-strong);
+  border-top-color: var(--cobalt);
+  border-radius: 50%;
+  animation: ob-spin 0.7s linear infinite;
+  display: inline-block;
+}
+@keyframes ob-spin { to { transform: rotate(360deg); } }
+
+.ob-parsed-head { display: flex; align-items: center; gap: 14px; }
+.ob-parsed-check { font-size: 0.8rem; color: var(--sage); display: flex; align-items: center; gap: 5px; margin-top: 3px; }
+.ob-remove { margin-left: auto; background: none; border: none; color: var(--ink-faint); cursor: pointer; padding: 6px; border-radius: 4px; }
+.ob-remove:hover { background: var(--bg-sunken); color: var(--ink); }
+.ob-parsed-body { border-top: 1px solid var(--line); padding-top: 14px; }
+.ob-parsed-label { font-size: 0.78rem; color: var(--ink-faint); font-family: var(--font-mono); display: block; margin-bottom: 10px; }
+.ob-parsed-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* ---- Calculating step ---- */
+.ob-calculating { text-align: center; display: flex; flex-direction: column; align-items: center; padding-top: 40px; }
+.ob-pulse-ring { margin-bottom: 32px; }
+.ob-pulse-arc { animation: ob-rotate 1.4s linear infinite; transform-origin: 60px 60px; }
+@keyframes ob-rotate { to { transform: rotate(360deg); } }
+.ob-calc-message { min-height: 1.4em; }
+
+/* ---- Result step ---- */
+.ob-result { text-align: center; align-items: center; display: flex; flex-direction: column; }
+.ob-result h1 { max-width: 20ch; }
+.ob-result-ring { margin: 28px 0 36px; }
+.ob-result-matches { width: 100%; max-width: 360px; text-align: left; margin-bottom: 36px; }
+.ob-result-matches h4 { font-size: 0.78rem; color: var(--ink-faint); font-family: var(--font-mono); font-weight: 500; margin-bottom: 4px; }
+.ob-result-matches .stat-row:last-child { border-bottom: none; }
+.ob-finish { padding: 12px 24px; }
+
+@media (max-width: 880px) {
+  .ob-shell { grid-template-columns: 1fr; }
+  .ob-rail { display: none; }
+  .ob-progress-mobile {
+    display: block;
+    height: 3px;
+    background: var(--bg-sunken);
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+  .ob-progress-mobile-bar { height: 100%; background: var(--cobalt); transition: width 0.3s ease; }
+  .ob-content { padding: 40px 20px 64px; }
+}

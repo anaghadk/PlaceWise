@@ -1,0 +1,77 @@
+.public-shell { min-height: 100vh; display: flex; flex-direction: column; }
+
+.public-nav {
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+
+.public-nav-cta { display: flex; align-items: center; gap: 10px; }
+.public-nav-theme { width: auto; min-width: 132px; }
+
+.public-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: 68px;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+.wordmark:hover { text-decoration: none; }
+.wordmark.small { font-size: 1.05rem; margin-bottom: 6px; }
+
+.public-links {
+  display: flex;
+  gap: 28px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.public-links a { color: var(--ink-soft); }
+.public-links a:hover { color: var(--ink); text-decoration: none; }
+.public-links a.active { color: var(--ink); }
+
+.public-nav-cta { display: flex; gap: 10px; align-items: center; }
+
+.public-footer {
+  margin-top: 96px;
+  padding-top: 48px;
+  padding-bottom: 28px;
+  background: var(--bg-sunken);
+  border-top: 1px solid var(--line);
+}
+
+.public-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 48px;
+  padding-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.public-footer-inner p { font-size: 0.88rem; max-width: 32ch; }
+
+.footer-cols { display: flex; gap: 56px; }
+.footer-cols h4 { font-size: 0.78rem; text-transform: none; color: var(--ink-faint); font-family: var(--font-mono); font-weight: 500; margin-bottom: 10px; }
+.footer-cols a { display: block; color: var(--ink-soft); font-size: 0.88rem; margin-bottom: 8px; }
+.footer-cols a:hover { color: var(--ink); }
+
+.footer-meta { padding: 16px 0 0; }
+
+@media (max-width: 780px) {
+  .public-links { display: none; }
+  .public-footer-inner { flex-direction: column; gap: 28px; }
+}

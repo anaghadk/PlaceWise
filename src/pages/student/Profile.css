@@ -1,0 +1,10 @@
+.profile-page { max-width: 780px; }
+.profile-id { margin: 4px 0 32px; }
+
+.profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.profile-card { padding: 24px 26px; }
+.profile-card .stat-row:last-child { border-bottom: none; }
+
+@media (max-width: 720px) {
+  .profile-grid { grid-template-columns: 1fr; }
+}

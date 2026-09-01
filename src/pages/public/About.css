@@ -1,0 +1,6 @@
+.about-page { padding: 56px 32px 96px; max-width: 760px; }
+.about-lede { font-size: 1.02rem; }
+.about-page h2 { margin-top: 44px; }
+.about-list { padding-left: 20px; color: var(--ink-soft); }
+.about-list li { margin-bottom: 10px; max-width: 62ch; }
+.team-list { border-top: 1px solid var(--line-strong); margin-top: 8px; }

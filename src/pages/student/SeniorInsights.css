@@ -1,0 +1,3 @@
+.si-page { max-width: 780px; }
+
+.si-list { display: flex; flex-direction: column; gap: 16px; }

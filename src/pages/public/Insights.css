@@ -1,0 +1,28 @@
+.insights-page { padding: 56px 32px 96px; }
+
+.insight-list { margin-top: 36px; display: flex; flex-direction: column; gap: 18px; max-width: 760px; }
+
+.insight-card { padding: 26px 28px; }
+.insight-card:hover { box-shadow: 0 6px 18px rgba(27,35,64,0.09); border-color: var(--line-strong); }
+.insight-card h3 { margin-bottom: 4px; }
+.insight-meta { color: var(--ink-faint); font-size: 0.76rem; }
+.insight-summary { font-size: 0.92rem; margin: 14px 0 16px; }
+.insight-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.insight-locked {
+  padding: 30px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--bg-sunken);
+  border-style: dashed;
+}
+.insight-locked svg { flex-shrink: 0; color: var(--ink-faint); }
+.insight-locked h3 { font-size: 1.02rem; margin-bottom: 4px; }
+.insight-locked p { margin: 0; font-size: 0.86rem; }
+.insight-locked .btn { flex-shrink: 0; margin-left: auto; }
+
+@media (max-width: 640px) {
+  .insight-locked { flex-direction: column; align-items: flex-start; }
+  .insight-locked .btn { margin-left: 0; }
+}
