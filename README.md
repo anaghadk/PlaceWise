@@ -1,70 +1,76 @@
-# PlaceWise (CampusIQ) — Frontend
+# 🎓 PlaceWise
 
-React + Vite frontend for both the public portal and the student portal.
+## From Placement Intelligence to Personalized Success
 
-## Run it
+PlaceWise is an AI-powered campus placement intelligence platform designed to help students make smarter placement decisions using their academic profile, skills, resume information, company requirements, historical placement data, placement-test topics, and interview-question intelligence.
 
-```bash
-npm install
-npm run dev
-```
+Instead of providing generic placement advice, PlaceWise aims to answer questions such as:
 
-Opens at http://localhost:5173. Build for production with `npm run build` (outputs to `dist/`).
+- Which companies are the best fit for me?
+- What skills am I missing for a particular company?
+- What interview topics should I prepare?
+- Which DSA and Core CS topics are commonly asked?
+- What should I improve to increase my placement opportunities?
+- If I improve a particular skill, which new opportunities could become available?
 
-## New student flow
+At the core of PlaceWise is a **Databricks Genie Agent**, which provides natural-language, data-backed placement intelligence over the campus placement data.
 
-Signing up now routes through a 3-step onboarding wizard before the dashboard:
+---
 
-1. **Resume upload** (`pages/student/onboarding/ResumeStep.jsx`) — drag/drop or
-   browse, mock-parses the file and shows extracted skills. "Skip for now" is
-   allowed.
-2. **Readiness questionnaire** (`QuestionnaireStep.jsx`) — target roles,
-   confidence sliders, weekly prep time, backlog status.
-3. **Calculating** (`CalculatingStep.jsx`) → **Result** (`ResultStep.jsx`) —
-   calls `submitOnboarding()` in `api.js`, animates the readiness ring up to
-   the computed score, then hands off to the dashboard.
+# 🚀 Problem Statement
 
-Logging in (an existing account) skips onboarding entirely — `AuthContext`
-tracks an `onboarded` flag; `signup()` sets it `false`, `login()` sets it
-`true`. `ProtectedRoute` redirects unonboarded students from `/portal/*` to
-`/onboarding` automatically. When you wire up real auth, drive this flag from
-whatever the backend returns (e.g. `student.onboarding_complete`).
+Students often prepare for placements using scattered sources of information:
 
-## Structure
+- Generic coding platforms
+- Random interview experiences
+- Company websites
+- Seniors' advice
+- Unstructured placement-cell data
+- Personal assumptions about company requirements
 
-```
-src/
-  components/       shared layout + UI (PublicLayout, StudentLayout, ReadinessRing, SkillBar, ProtectedRoute)
-  context/          AuthContext.jsx — mock student auth, swap for real JWT/session logic
-  data/
-    api.js          <-- integration point. Every page calls functions from here.
-    mockData.js      raw mock data used by api.js today
-  pages/
-    public/         Home, Explore, Insights, About, Login, Signup
-    student/        Dashboard, Opportunities, SkillGaps, WhatIf, SeniorInsights, Profile
-  styles/tokens.css  design tokens (colors, type, spacing) — single source of truth
-```
+This creates a gap between:
 
-## Integrating with the backend
+> **What a student knows**
 
-Every page imports data functions from `src/data/api.js` — no page talks to
-`mockData.js` directly. To connect the real FastAPI backend:
+and
 
-1. Open `src/data/api.js`.
-2. Replace each function body with a `fetch()` (or `axios`) call to the matching
-   endpoint — suggested paths are listed in the comment at the top of the file.
-3. Keep each function's return shape the same as it is now, or update the small
-   number of call sites if a shape needs to change.
-4. In `src/context/AuthContext.jsx`, swap the mock `login`/`signup` for real
-   calls that store a token (e.g. in memory + an httpOnly cookie, or wherever
-   the backend expects it) and attach it to subsequent requests from `api.js`.
+> **What companies actually expect.**
 
-No other file needs to change — routing, layout, and all components are
-already wired to read from `api.js` and `AuthContext`.
+A student may have strong programming skills but still be underprepared for a particular company because of gaps in DSA, Core CS, databases, operating systems, networking, or other technical areas.
 
-## Design system
+At the same time, placement teams have valuable historical data but often lack an intelligent way to convert that data into actionable insights.
 
-Tokens live in `src/styles/tokens.css` as CSS custom properties (`--bg`,
-`--ink`, `--cobalt`, `--gold`, `--font-display`, etc.). Change a value there
-and it updates everywhere. Fonts (Fraunces, IBM Plex Sans, IBM Plex Mono) are
-loaded from Google Fonts in `index.html`.
+### PlaceWise addresses this gap by combining student information with placement intelligence and company requirements.
+
+---
+
+# 🏗️ System Architecture
+
+PlaceWise follows a modern data and AI architecture built around
+FastAPI, Databricks Lakehouse, and Databricks Genie.
+
+![PlaceWise System Architecture](docs/architecturediagram.jpeg)
+
+# 💡 Solution
+
+PlaceWise combines multiple sources of placement intelligence:
+
+```text
+Student Profile
+      +
+Resume & Skills
+      +
+Company Requirements
+      +
+Historical Placements
+      +
+Interview Questions
+      +
+Placement Test Topics
+      ↓
+Databricks Lakehouse
+      ↓
+Genie Agent
+      ↓
+Personalized Placement Intelligence
+
